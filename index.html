@@ -254,7 +254,9 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   border-radius: 20px;
   padding: clamp(20px, 4vw, 32px);
   display: flex; flex-direction: column; justify-content: space-between;
+  gap: 1.5rem;
   overflow: hidden;
+  container-type: inline-size;
   transition: background-color .35s ease, color .35s ease;
 }
 .poster .p-title {
@@ -262,9 +264,9 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   font-size: clamp(2.6rem, 6vw, 4rem);
   line-height: .9;
   letter-spacing: -0.03em;
-  transition: font-variation-settings .45s ease, font-weight .45s ease, transform .45s ease;
+  transition: font-variation-settings .45s ease, font-weight .45s ease, transform .45s ease, font-size .45s ease;
 }
-.poster .p-meta { margin: 0; font-size: 1rem; line-height: 1.4; }
+.poster .p-meta { margin: 0; font-size: clamp(.95rem, 2.6cqi, 1.2rem); line-height: 1.45; font-weight: 500; }
 .remix-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .btn-ink { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .vibe-name { font-weight: 600; color: var(--ink-soft); }
@@ -569,11 +571,11 @@ split.addEventListener("input", () => compare.style.setProperty("--split", split
 
 /* ---- Demo 2: poster remix ---- */
 const vibes = [
-  { name: "Cobalt pop",   bg: "#2B3BFF", fg: "#FFFFFF", wdth: 75,  wght: 800, align: "flex-start", rot: "0deg",  just: "space-between" },
-  { name: "Bubblegum",    bg: "#FF7AC6", fg: "#16163A", wdth: 100, wght: 300, align: "flex-start", rot: "0deg",  just: "flex-end" },
-  { name: "Night shift",  bg: "#16163A", fg: "#FF7AC6", wdth: 75,  wght: 800, align: "center",     rot: "-6deg", just: "center" },
-  { name: "Paper cut",    bg: "#FFFFFF", fg: "#2B3BFF", wdth: 100, wght: 700, align: "flex-end",   rot: "0deg",  just: "space-between" },
-  { name: "Lemon riot",   bg: "#FFE14D", fg: "#16163A", wdth: 82,  wght: 800, align: "flex-start", rot: "4deg",  just: "space-around" }
+  { name: "Cobalt pop",  bg: "#2B3BFF", fg: "#FFFFFF", wdth: 75,  wght: 800, size: 1.35, align: "flex-start", just: "space-between", rot: "0deg" },
+  { name: "Bubblegum",   bg: "#FF7AC6", fg: "#16163A", wdth: 100, wght: 300, size: 1.15, align: "flex-start", just: "space-between", rot: "0deg" },
+  { name: "Night shift", bg: "#16163A", fg: "#FF7AC6", wdth: 75,  wght: 800, size: 1.1,  align: "center",     just: "center",        rot: "-5deg" },
+  { name: "Paper cut",   bg: "#FFFFFF", fg: "#2B3BFF", wdth: 100, wght: 700, size: 1,    align: "flex-end",   just: "space-between", rot: "0deg" },
+  { name: "Lemon riot",  bg: "#FFE14D", fg: "#16163A", wdth: 82,  wght: 800, size: 1.25, align: "flex-start", just: "space-between", rot: "3deg" }
 ];
 let vibe = 0;
 const poster = document.getElementById("poster");
@@ -587,6 +589,7 @@ function applyVibe(v) {
   title.style.fontVariationSettings = `"wdth" ${v.wdth}`;
   title.style.fontWeight = v.wght;
   title.style.transform = `rotate(${v.rot})`;
+  title.style.fontSize = `calc(clamp(2.6rem, 13cqi, 6.5rem) * ${v.size})`;
   document.getElementById("vibe-name").textContent = "Vibe: " + v.name;
 }
 applyVibe(vibes[0]);
