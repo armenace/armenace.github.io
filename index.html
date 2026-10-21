@@ -53,7 +53,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 #menace-btn {
   font: bold clamp(22px, 5vw, 34px) Arial, sans-serif;
   padding: .55em 1.3em;
-  margin: 12px 0 4px;
+  margin: 6px 0 2px;
   background: #e1e1e1;
   border: 5px outset #f0f0f0;
   cursor: pointer;
@@ -63,6 +63,19 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 #menace-btn:active { border-style: inset; }
 #menace-btn:focus-visible { outline: 2px dotted #000; outline-offset: 2px; }
 #boring .hint { color: #808080; font-size: 13px; }
+#boring .new-box {
+  background: #FFFFCC;
+  border: 3px dashed #FF0000;
+  padding: 10px 16px 12px;
+  margin: 0 0 16px;
+  max-width: 640px;
+}
+#boring .new-box p { margin: 6px 0; }
+#boring .new-line { font-size: 18px; }
+#boring .blink { color: #FF0000; font-weight: bold; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { visibility: hidden; } }
+#boring .countdown { font-size: 15px; }
+#boring .countdown b { color: #FF0000; font-size: 1.25em; }
 .falling { will-change: transform, opacity; }
 
 /* =================== MENACE MODE =================== */
@@ -346,6 +359,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   #boring .marquee span { animation: none; padding-left: 0; }
+  #boring .blink { animation: none; }
 }
 
 /* Contact form */
@@ -391,6 +405,11 @@ footer {
 <!-- ============ BORING MODE ============ -->
 <div id="boring">
   <h1>Welcome to Armen's Homepage!</h1>
+  <div class="new-box">
+    <p class="new-line"><span class="blink">&#9733; NEW! &#9733;</span> This website is boring. You can fix that:</p>
+    <p><button id="menace-btn" type="button">Make it less boring</button></p>
+    <p class="countdown" id="countdown" aria-live="off">Or wait: this boring page will upgrade itself in <b id="count">7</b> seconds...</p>
+  </div>
   <p class="marquee"><span>*** This website is under construction *** Please come back later *** Best viewed in Internet Explorer 5 ***</span></p>
   <hr>
   <h2>About Me</h2>
@@ -407,7 +426,6 @@ footer {
   </ul>
   <hr>
   <p>You are visitor number <span class="counter">000042</span></p>
-  <p><button id="menace-btn" type="button">Make it less boring</button></p>
   <p class="hint">Last updated: 1999</p>
 </div>
 
@@ -669,7 +687,12 @@ function showMenace() {
   startDots();
 }
 
-document.getElementById("menace-btn").addEventListener("click", () => {
+let menaced = false;
+function menaceIt() {
+  if (menaced) return;
+  menaced = true;
+  stopCountdown();
+  try { sessionStorage.setItem("armenace-seen", "1"); } catch (e) {}
   if (reduce) return showMenace();
   const parts = [...boring.children];
   parts.forEach((el, i) => {
@@ -683,12 +706,31 @@ document.getElementById("menace-btn").addEventListener("click", () => {
     });
   });
   setTimeout(showMenace, 900 + parts.length * 55);
-});
+}
+document.getElementById("menace-btn").addEventListener("click", menaceIt);
+
+/* Countdown: nobody gets stuck on the boring page */
+let countTimer = null;
+function stopCountdown() { clearInterval(countTimer); countTimer = null; }
+function startCountdown() {
+  let n = 7;
+  const out = document.getElementById("count");
+  out.textContent = n;
+  stopCountdown();
+  countTimer = setInterval(() => {
+    n -= 1;
+    out.textContent = n;
+    if (n <= 0) { stopCountdown(); menaceIt(); }
+  }, 1000);
+}
 
 document.getElementById("unmenace").addEventListener("click", () => {
   menace.hidden = true;
   [...boring.children].forEach(el => { el.style.transition = "none"; el.style.transform = ""; el.style.opacity = ""; });
   boring.hidden = false;
+  menaced = false;
+  try { sessionStorage.removeItem("armenace-seen"); } catch (e) {}
+  startCountdown();
   window.scrollTo(0, 0);
   document.getElementById("menace-btn").focus();
 });
@@ -802,6 +844,11 @@ function startDots() {
   new ResizeObserver(build).observe(box);
   build();
 }
+
+/* ---- Start: returning in the same visit? Skip the joke. ---- */
+let seen = false;
+try { seen = sessionStorage.getItem("armenace-seen") === "1"; } catch (e) {}
+if (seen) { menaced = true; showMenace(); } else { startCountdown(); }
 </script>
 </body>
 </html>
