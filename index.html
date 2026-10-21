@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
 <style>
-/* Your email and GitHub link are set at the top of the <script> at the bottom of this file. */
+/* Your Web3Forms key and GitHub link are set at the top of the script at the bottom of this file. */
 
 :root {
   --cobalt: #2B3BFF;
@@ -347,6 +347,43 @@ footer {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   #boring .marquee span { animation: none; padding-left: 0; }
 }
+
+/* Contact form */
+.contact-grid { display: grid; grid-template-columns: 1fr; gap: clamp(40px, 6vw, 72px); align-items: start; }
+@media (min-width: 920px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.contact-form {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 28px 28px 28px 6px;
+  padding: clamp(22px, 3.5vw, 36px);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.field { margin-bottom: 20px; }
+.field label { display: block; font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+.field input, .field textarea {
+  width: 100%;
+  font: 500 1rem/1.5 var(--display);
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: .7em .9em;
+}
+.field textarea { resize: vertical; min-height: 140px; }
+.field input:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 2px; }
+.field ::placeholder { color: #8A8AA8; }
+.field .help { margin: 6px 0 0; font-size: .9rem; color: var(--ink-soft); }
+.field.invalid input, .field.invalid textarea { border-color: #D1123F; box-shadow: 0 0 0 1px #D1123F; }
+.field .err { margin: 6px 0 0; font-size: .9rem; font-weight: 600; color: #B00E36; }
+.send-btn { width: 100%; font-size: 1.1rem; }
+.send-btn[disabled] { opacity: .65; cursor: progress; transform: none; }
+.form-status { margin: 14px 0 0; font-weight: 600; min-height: 1.5em; font-size: 1rem; }
+.form-status:empty { margin: 0; min-height: 0; }
+.form-status.ok { color: #0E7A3E; }
+.form-status.bad { color: #B00E36; }
+.contact-form.sent .field, .contact-form.sent .send-btn { display: none; }
+.contact-form.sent .form-status { font-size: 1.25rem; margin: 0; color: var(--ink); }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 </style>
 </head>
 <body>
@@ -366,7 +403,7 @@ footer {
   <h2>Links</h2>
   <ul>
     <li><a class="js-github" href="https://github.com/armenace">My GitHub</a></li>
-    <li><a class="js-email" href="#">E-mail me</a></li>
+    <li><a class="js-contact" href="#contact">Contact me</a></li>
   </ul>
   <hr>
   <p>You are visitor number <span class="counter">000042</span></p>
@@ -391,7 +428,7 @@ footer {
         <p>I build web pages with AI at my side and a strong opinion about every pixel. You just watched one boring page get the treatment. Yours could be next.</p>
         <div class="actions">
           <a class="btn btn-pink" href="#proof">See the proof</a>
-          <a class="btn btn-ghost js-email" href="#">Email me</a>
+          <a class="btn btn-ghost" href="#contact">Start a project</a>
         </div>
       </div>
     </div>
@@ -498,11 +535,34 @@ footer {
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="wrap">
-        <h2 class="section-title" id="contact-title">Got a boring website? Let me at it.</h2>
-        <p>I'm open to vibecoding roles and freelance projects. Tell me what you're building and I'll reply within a day.</p>
-        <div class="actions">
-          <a class="btn btn-ink js-email" href="#">Email Armen</a>
-          <a class="btn btn-ghost js-github" href="https://github.com/armenace">See my GitHub</a>
+        <div class="contact-grid">
+          <div class="contact-intro">
+            <h2 class="section-title" id="contact-title">Got a boring website? Let me at it.</h2>
+            <p>I'm open to vibecoding roles and freelance projects. Tell me what you're building and I'll reply within a day.</p>
+            <a class="btn btn-ghost js-github" href="https://github.com/armenace">See my GitHub</a>
+          </div>
+
+          <form class="contact-form" id="contact-form" novalidate>
+            <input type="hidden" name="subject" value="New project request from ArMenace site">
+            <input type="hidden" name="from_name" value="ArMenace website">
+            <input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100">
+            </div>
+            <div class="field">
+              <label for="f-email">Your email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="f-email-help">
+              <p class="help" id="f-email-help">So I can reply to you.</p>
+            </div>
+            <div class="field">
+              <label for="f-msg">Your project</label>
+              <textarea id="f-msg" name="message" rows="5" required maxlength="4000" placeholder="What are you building, and what's boring about it right now?"></textarea>
+            </div>
+            <button class="btn btn-ink send-btn" type="submit" id="send-btn">Send project</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
         <footer>
           <span>Designed and built by Armen with AI. Checked by hand.</span>
@@ -515,11 +575,80 @@ footer {
 
 <script>
 /* ---------- EDIT THESE TWO LINES ---------- */
-const CONTACT_EMAIL = "a.harutyunian.a@gmail.com";
+// Get a free key at https://web3forms.com (enter your email, the key is emailed to you).
+const WEB3FORMS_KEY = "PASTE-YOUR-ACCESS-KEY-HERE";
 const GITHUB_URL = "https://github.com/armenace";
 /* ------------------------------------------ */
 
-document.querySelectorAll(".js-email").forEach(a => a.href = "mailto:" + CONTACT_EMAIL);
+/* ---- Contact form: sends to your inbox through Web3Forms ---- */
+const form = document.getElementById("contact-form");
+const statusEl = document.getElementById("form-status");
+const sendBtn = document.getElementById("send-btn");
+const rules = {
+  name:    v => v.trim() ? "" : "Add your name so I know who to reply to.",
+  email:   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? "" : "Enter an email like name@example.com.",
+  message: v => v.trim().length >= 10 ? "" : "Tell me a bit more about the project (at least 10 characters)."
+};
+function setError(input, msg) {
+  const field = input.closest(".field");
+  let err = field.querySelector(".err");
+  if (msg) {
+    if (!err) { err = document.createElement("p"); err.className = "err"; err.id = input.id + "-err"; field.appendChild(err); }
+    err.textContent = msg;
+    field.classList.add("invalid");
+    input.setAttribute("aria-invalid", "true");
+    input.setAttribute("aria-describedby", [input.id === "f-email" ? "f-email-help" : "", err.id].join(" ").trim());
+  } else {
+    if (err) err.remove();
+    field.classList.remove("invalid");
+    input.removeAttribute("aria-invalid");
+    if (input.id === "f-email") input.setAttribute("aria-describedby", "f-email-help"); else input.removeAttribute("aria-describedby");
+  }
+  return !msg;
+}
+Object.keys(rules).forEach(n => form.elements[n].addEventListener("input", e => {
+  if (e.target.closest(".field").classList.contains("invalid")) setError(e.target, rules[n](e.target.value));
+}));
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  statusEl.className = "form-status"; statusEl.textContent = "";
+  let firstBad = null;
+  for (const n of Object.keys(rules)) {
+    const el = form.elements[n];
+    if (!setError(el, rules[n](el.value)) && !firstBad) firstBad = el;
+  }
+  if (firstBad) { firstBad.focus(); return; }
+  if (form.elements.botcheck.checked) return;
+  if (!WEB3FORMS_KEY || WEB3FORMS_KEY.startsWith("PASTE")) {
+    statusEl.className = "form-status bad";
+    statusEl.textContent = "This form isn't connected yet. Add your Web3Forms key in the code.";
+    return;
+  }
+  sendBtn.disabled = true; sendBtn.textContent = "Sending…";
+  const data = Object.fromEntries(new FormData(form));
+  data.access_key = WEB3FORMS_KEY;
+  delete data.botcheck;
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(data)
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || out.success === false) throw new Error(out.message || "Server error");
+    form.classList.add("sent");
+    statusEl.className = "form-status ok";
+    statusEl.textContent = "Sent. Thanks, " + data.name.trim().split(" ")[0] + ". I'll reply to " + data.email.trim() + " within a day.";
+    form.reset();
+  } catch (err) {
+    statusEl.className = "form-status bad";
+    statusEl.textContent = "Your message didn't send. Check your connection and try again.";
+  } finally {
+    sendBtn.disabled = false; sendBtn.textContent = "Send project";
+  }
+});
+
 document.querySelectorAll(".js-github").forEach(a => a.href = GITHUB_URL);
 
 const boring = document.getElementById("boring");
@@ -563,6 +692,15 @@ document.getElementById("unmenace").addEventListener("click", () => {
   window.scrollTo(0, 0);
   document.getElementById("menace-btn").focus();
 });
+
+document.querySelectorAll(".js-contact").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  document.getElementById("menace-btn").click();
+  setTimeout(() => {
+    document.getElementById("contact").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    document.getElementById("f-name").focus({ preventScroll: true });
+  }, reduce ? 50 : 2300);
+}));
 
 /* ---- Demo 1: before/after slider ---- */
 const compare = document.getElementById("compare");
