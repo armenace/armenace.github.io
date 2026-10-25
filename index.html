@@ -3,10 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+/* Runs before first paint: no-JS visitors and crawlers get the real site, returning visitors skip the joke without a flash. */
+(function (h) {
+  h.classList.add("js");
+  try { if (sessionStorage.getItem("armenace-seen") === "1") h.classList.add("menaced"); } catch (e) {}
+})(document.documentElement);
+</script>
 <title>ArMenace | Armen builds web pages</title>
 <meta name="description" content="Armen, a.k.a. ArMenace: a menace to boring websites. Vibecoder building bold, fast, accessible web pages with AI.">
+<link rel="canonical" href="https://armenace.github.io/">
+<meta name="theme-color" content="#2B3BFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://armenace.github.io/">
 <meta property="og:title" content="ArMenace, a menace to boring websites">
 <meta property="og:description" content="Armen builds bold web pages with AI. Click the button and watch a boring website fall apart.">
+<meta property="og:image" content="https://armenace.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ArMenace: a menace to boring websites">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
@@ -29,6 +47,8 @@
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); }
 [hidden] { display: none !important; }
+/* Which page shows: without JS, only the real site. With JS, the joke until html gets .menaced. */
+html:not(.js) #boring, .js:not(.menaced) #menace, .js.menaced #boring { display: none; }
 
 /* =================== BORING MODE (the joke) =================== */
 #boring {
@@ -117,10 +137,11 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 .nav {
   position: absolute; top: 0; left: 0; right: 0;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 20px var(--gutter);
+  padding: 8px var(--gutter);
   font-weight: 700;
 }
-.nav a { color: var(--paper); text-decoration: none; font-weight: 500; }
+.nav a { color: var(--paper); text-decoration: none; font-weight: 500; display: inline-block; padding: 12px 4px; }
+.nav .links { display: flex; gap: 20px; }
 .nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .nav .mark { font-variation-settings: "wdth" 75; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.01em; }
 
@@ -253,7 +274,9 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 .compare input[type=range] {
   position: absolute; inset: 0; width: 100%; height: 100%;
   margin: 0; opacity: 0; cursor: ew-resize;
+  pointer-events: none; /* dragging is handled on .compare so it works on iOS too; the input stays for keyboard users */
 }
+.compare { touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
 .compare:has(input:focus-visible) { outline: 3px solid var(--pink); outline-offset: 4px; }
 .compare-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: .9rem; color: var(--ink-soft); }
 
@@ -293,12 +316,17 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   background: var(--ink);
   aspect-ratio: 4 / 5;
   max-height: 520px;
-  touch-action: none;
+  touch-action: pan-y; /* swipe up/down still scrolls the page */
+}
+@media (min-width: 860px) {
+  /* Fill the grid column so both demos line up with the slider card above */
+  .poster, .dots-box { aspect-ratio: auto; height: 520px; max-height: none; }
 }
 .dots-box canvas { display: block; width: 100%; height: 100%; }
 .dots-box .dots-hint {
   position: absolute; left: 20px; bottom: 18px; margin: 0;
   color: var(--paper); font-weight: 700; font-size: 1.1rem; pointer-events: none;
+  background: var(--ink); padding: .3em .75em; border-radius: 999px;
   transition: opacity .4s ease;
 }
 
@@ -349,11 +377,13 @@ footer {
 .linklike {
   background: none; border: 0; padding: 0; color: inherit; font: inherit; font-weight: 700;
   text-decoration: underline; text-underline-offset: 4px; cursor: pointer;
+  padding: 12px 0;
 }
 
 @media (max-width: 560px) {
   .compare { aspect-ratio: auto; min-height: 360px; }
-  .nav .links a + a { display: none; }
+  .name { letter-spacing: -0.015em; }
+  .contact-form, .loud-card { box-shadow: 6px 6px 0 var(--ink); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -385,7 +415,7 @@ footer {
 }
 .field textarea { resize: vertical; min-height: 140px; }
 .field input:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 2px; }
-.field ::placeholder { color: #8A8AA8; }
+.field ::placeholder { color: #6E6E8C; }
 .field .help { margin: 6px 0 0; font-size: .9rem; color: var(--ink-soft); }
 .field.invalid input, .field.invalid textarea { border-color: #D1123F; box-shadow: 0 0 0 1px #D1123F; }
 .field .err { margin: 6px 0 0; font-size: .9rem; font-weight: 600; color: #B00E36; }
@@ -430,12 +460,12 @@ footer {
 </div>
 
 <!-- ============ MENACE MODE ============ -->
-<div id="menace" hidden>
+<div id="menace">
 
   <header class="hero">
     <nav class="nav" aria-label="Main">
       <span class="mark">ArMenace</span>
-      <span class="links"><a href="#proof">Proof</a>&nbsp;&nbsp;&nbsp;<a href="#contact">Contact</a></span>
+      <span class="links"><a href="#proof">Proof</a><a href="#contact">Contact</a></span>
     </nav>
     <div class="wrap">
       <h1 class="name" id="hero-name" tabindex="-1" aria-label="ArMenace">
@@ -669,14 +699,14 @@ form.addEventListener("submit", async e => {
 
 document.querySelectorAll(".js-github").forEach(a => a.href = GITHUB_URL);
 
+const root = document.documentElement;
 const boring = document.getElementById("boring");
 const menace = document.getElementById("menace");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---- The big moment: boring page falls apart ---- */
 function showMenace() {
-  boring.hidden = true;
-  menace.hidden = false;
+  root.classList.add("menaced");
   window.scrollTo(0, 0);
   if (!reduce) {
     menace.classList.remove("stamp");
@@ -725,9 +755,8 @@ function startCountdown() {
 }
 
 document.getElementById("unmenace").addEventListener("click", () => {
-  menace.hidden = true;
   [...boring.children].forEach(el => { el.style.transition = "none"; el.style.transform = ""; el.style.opacity = ""; });
-  boring.hidden = false;
+  root.classList.remove("menaced");
   menaced = false;
   try { sessionStorage.removeItem("armenace-seen"); } catch (e) {}
   startCountdown();
@@ -740,7 +769,8 @@ document.querySelectorAll(".js-contact").forEach(a => a.addEventListener("click"
   document.getElementById("menace-btn").click();
   setTimeout(() => {
     document.getElementById("contact").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
-    document.getElementById("f-name").focus({ preventScroll: true });
+    // On touch screens, focusing the field would pop the keyboard up uninvited
+    if (matchMedia("(hover: hover)").matches) document.getElementById("f-name").focus({ preventScroll: true });
   }, reduce ? 50 : 2300);
 }));
 
@@ -748,6 +778,20 @@ document.querySelectorAll(".js-contact").forEach(a => a.addEventListener("click"
 const compare = document.getElementById("compare");
 const split = document.getElementById("split");
 split.addEventListener("input", () => compare.style.setProperty("--split", split.value + "%"));
+// Drag anywhere on the card (iOS only lets you drag a range input by its thumb, which is invisible here)
+function dragSplit(e) {
+  const r = compare.getBoundingClientRect();
+  split.value = Math.round(Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1) * 100);
+  compare.style.setProperty("--split", split.value + "%");
+}
+let dragging = false;
+compare.addEventListener("pointerdown", e => {
+  dragging = true;
+  dragSplit(e);
+  try { compare.setPointerCapture(e.pointerId); } catch (err) {}
+});
+compare.addEventListener("pointermove", e => { if (dragging) dragSplit(e); });
+["pointerup", "pointercancel"].forEach(t => compare.addEventListener(t, () => { dragging = false; }));
 
 /* ---- Demo 2: poster remix ---- */
 const vibes = [
@@ -840,15 +884,15 @@ function startDots() {
   box.addEventListener("pointerdown", move);
   box.addEventListener("pointerleave", () => { ptr.x = ptr.y = -9999; kick(); });
   box.addEventListener("pointerup", e => { if (e.pointerType !== "mouse") { ptr.x = ptr.y = -9999; kick(); } });
+  box.addEventListener("pointercancel", () => { ptr.x = ptr.y = -9999; kick(); }); // the browser took over to scroll
   new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible) kick(); }).observe(box);
   new ResizeObserver(build).observe(box);
   build();
 }
 
 /* ---- Start: returning in the same visit? Skip the joke. ---- */
-let seen = false;
-try { seen = sessionStorage.getItem("armenace-seen") === "1"; } catch (e) {}
-if (seen) { menaced = true; showMenace(); } else { startCountdown(); }
+// The head script already set .menaced for returning visitors, so the joke never flashes
+if (root.classList.contains("menaced")) { menaced = true; startDots(); } else { startCountdown(); }
 </script>
 </body>
 </html>
