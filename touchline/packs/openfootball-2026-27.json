@@ -1,0 +1,654 @@
+{
+ "name": "openfootball clubs 2026/27",
+ "source": "openfootball/football.json (public domain)",
+ "leagues": {
+  "eng": {
+   "name": "English Premier League",
+   "clubs": {
+    "MCS": {
+     "name": "Manchester City FC",
+     "short": "MCI"
+    },
+    "MSR": {
+     "name": "Liverpool FC",
+     "short": "LIV"
+    },
+    "NLR": {
+     "name": "Arsenal FC",
+     "short": "ARS"
+    },
+    "WLB": {
+     "name": "Chelsea FC",
+     "short": "CHE"
+    },
+    "MRD": {
+     "name": "Manchester United FC",
+     "short": "MUN"
+    },
+    "NLW": {
+     "name": "Tottenham Hotspur FC",
+     "short": "TOT"
+    },
+    "TYN": {
+     "name": "Newcastle United FC",
+     "short": "NEW"
+    },
+    "BHC": {
+     "name": "Aston Villa FC",
+     "short": "AVL"
+    },
+    "SXC": {
+     "name": "Brighton and Hove Albion FC",
+     "short": "BHA"
+    },
+    "WLR": {
+     "name": "Brentford FC",
+     "short": "BRE"
+    },
+    "MSB": {
+     "name": "Everton FC",
+     "short": "EVE"
+    },
+    "ELC": {
+     "name": "Leeds United FC",
+     "short": "LEE",
+     "c1": "#ffffff",
+     "c2": "#1d428a"
+    },
+    "NTR": {
+     "name": "Nottingham Forest FC",
+     "short": "NFO"
+    },
+    "SLB": {
+     "name": "Crystal Palace FC",
+     "short": "CRY"
+    },
+    "WVG": {
+     "name": "Sunderland AFC",
+     "short": "SUN",
+     "c1": "#eb172b",
+     "c2": "#ffffff"
+    },
+    "SCR": {
+     "name": "AFC Bournemouth",
+     "short": "BOU"
+    },
+    "TRS": {
+     "name": "Fulham FC",
+     "short": "FUL"
+    },
+    "LCB": {
+     "name": "Coventry City FC",
+     "short": "COV",
+     "c1": "#59cbe8",
+     "c2": "#ffffff"
+    },
+    "SFB": {
+     "name": "Ipswich Town FC",
+     "short": "IPS"
+    },
+    "HMR": {
+     "name": "Hull City AFC",
+     "short": "HUL",
+     "c1": "#f5a12d",
+     "c2": "#000000"
+    }
+   },
+   "squads": {}
+  },
+  "esp": {
+   "name": "Spain Primera División",
+   "clubs": {
+    "MDW": {
+     "name": "Real Madrid CF",
+     "short": "RMA"
+    },
+    "CBG": {
+     "name": "FC Barcelona",
+     "short": "BAR"
+    },
+    "MRW": {
+     "name": "Club Atlético de Madrid",
+     "short": "ATM"
+    },
+    "BQR": {
+     "name": "Athletic Club",
+     "short": "ATH"
+    },
+    "SVW": {
+     "name": "Sevilla FC",
+     "short": "SEV"
+    },
+    "SVG": {
+     "name": "Real Betis Balompié",
+     "short": "BET"
+    },
+    "SSB": {
+     "name": "Real Sociedad de Fútbol",
+     "short": "RSO"
+    },
+    "VYL": {
+     "name": "Villarreal CF",
+     "short": "VIL"
+    },
+    "VLW": {
+     "name": "Valencia CF",
+     "short": "VAL"
+    },
+    "VGS": {
+     "name": "RC Celta de Vigo",
+     "short": "CEL"
+    },
+    "GRS": {
+     "name": "RC Deportivo La Coruña",
+     "short": "DEP",
+     "c1": "#0047ab",
+     "c2": "#ffffff"
+    },
+    "MSO": {
+     "name": "Getafe CF",
+     "short": "GET"
+    },
+    "PMR": {
+     "name": "CA Osasuna",
+     "short": "OSA"
+    },
+    "MJR": {
+     "name": "Málaga CF",
+     "short": "MAL",
+     "c1": "#1b6bb5",
+     "c2": "#ffffff"
+    },
+    "VLC": {
+     "name": "Rayo Vallecano de Madrid",
+     "short": "RAY"
+    },
+    "VTB": {
+     "name": "Deportivo Alavés",
+     "short": "ALA"
+    },
+    "BBW": {
+     "name": "RCD Espanyol de Barcelona",
+     "short": "ESP"
+    },
+    "CNY": {
+     "name": "Real Racing Club de Santander",
+     "short": "RAC",
+     "c1": "#007a3d",
+     "c2": "#ffffff"
+    },
+    "LGG": {
+     "name": "Elche CF",
+     "short": "ELC",
+     "c1": "#00843d",
+     "c2": "#ffffff"
+    },
+    "VDV": {
+     "name": "Levante UD",
+     "short": "LEV",
+     "c1": "#00428c",
+     "c2": "#b5122d"
+    }
+   },
+   "squads": {}
+  },
+  "ita": {
+   "name": "Italian Serie A",
+   "clubs": {
+    "MBB": {
+     "name": "FC Internazionale Milano",
+     "short": "INT"
+    },
+    "TBW": {
+     "name": "Juventus FC",
+     "short": "JUV"
+    },
+    "MRB": {
+     "name": "AC Milan",
+     "short": "MIL"
+    },
+    "NPS": {
+     "name": "SSC Napoli",
+     "short": "NAP"
+    },
+    "RYR": {
+     "name": "AS Roma",
+     "short": "ROM"
+    },
+    "RMS": {
+     "name": "SS Lazio",
+     "short": "LAZ"
+    },
+    "BGB": {
+     "name": "Atalanta BC",
+     "short": "ATA"
+    },
+    "FLV": {
+     "name": "ACF Fiorentina",
+     "short": "FIO"
+    },
+    "BLR": {
+     "name": "Bologna FC 1909",
+     "short": "BOL"
+    },
+    "TGR": {
+     "name": "Torino FC",
+     "short": "TOR"
+    },
+    "FBW": {
+     "name": "Udinese Calcio",
+     "short": "UDI"
+    },
+    "GNR": {
+     "name": "Genoa CFC",
+     "short": "GEN"
+    },
+    "CMB": {
+     "name": "Como 1907",
+     "short": "COM"
+    },
+    "PYB": {
+     "name": "Parma Calcio 1913",
+     "short": "PAR"
+    },
+    "SRB": {
+     "name": "Cagliari Calcio",
+     "short": "CAG"
+    },
+    "VYB": {
+     "name": "US Sassuolo Calcio",
+     "short": "SAS",
+     "c1": "#00a650",
+     "c2": "#000000"
+    },
+    "LYR": {
+     "name": "US Lecce",
+     "short": "LEC"
+    },
+    "EMB": {
+     "name": "Frosinone Calcio",
+     "short": "FRO",
+     "c1": "#ffd200",
+     "c2": "#0047ab"
+    },
+    "MZR": {
+     "name": "AC Monza",
+     "short": "MON"
+    },
+    "VOG": {
+     "name": "Venezia FC",
+     "short": "VEN"
+    }
+   },
+   "squads": {}
+  },
+  "ger": {
+   "name": "Deutsche Bundesliga",
+   "clubs": {
+    "MCR": {
+     "name": "FC Bayern München",
+     "short": "FCB"
+    },
+    "LVR": {
+     "name": "Bayer 04 Leverkusen",
+     "short": "B04"
+    },
+    "DTY": {
+     "name": "Borussia Dortmund",
+     "short": "BVB"
+    },
+    "LPR": {
+     "name": "RB Leipzig",
+     "short": "RBL"
+    },
+    "FBR": {
+     "name": "Eintracht Frankfurt",
+     "short": "SGE"
+    },
+    "STW": {
+     "name": "VfB Stuttgart",
+     "short": "VFB"
+    },
+    "FRR": {
+     "name": "SC Freiburg",
+     "short": "SCF"
+    },
+    "GBG": {
+     "name": "Borussia Mönchengladbach",
+     "short": "BMG"
+    },
+    "WBG": {
+     "name": "FC Schalke 04",
+     "short": "S04",
+     "c1": "#004d9d",
+     "c2": "#ffffff"
+    },
+    "MZR": {
+     "name": "1. FSV Mainz 05",
+     "short": "M05"
+    },
+    "BRG": {
+     "name": "SV Werder Bremen",
+     "short": "SVW"
+    },
+    "BER": {
+     "name": "1. FC Union Berlin",
+     "short": "FCU"
+    },
+    "AUG": {
+     "name": "FC Augsburg",
+     "short": "FCA"
+    },
+    "KRB": {
+     "name": "TSG 1899 Hoffenheim",
+     "short": "TSG"
+    },
+    "HDR": {
+     "name": "1. FC Köln",
+     "short": "KOE",
+     "c1": "#ed1c24",
+     "c2": "#ffffff"
+    },
+    "HBB": {
+     "name": "Hamburger SV",
+     "short": "HSV",
+     "c1": "#005ca9",
+     "c2": "#ffffff"
+    },
+    "BCB": {
+     "name": "SC Paderborn 07",
+     "short": "SCP",
+     "c1": "#003f87",
+     "c2": "#000000"
+    },
+    "KLB": {
+     "name": "SV 07 Elversberg",
+     "short": "SVE",
+     "c1": "#1a1a1a",
+     "c2": "#ffffff"
+    }
+   },
+   "squads": {}
+  },
+  "fra": {
+   "name": "French Ligue 1",
+   "clubs": {
+    "PBR": {
+     "name": "Paris Saint-Germain FC",
+     "short": "PSG"
+    },
+    "MSS": {
+     "name": "Olympique de Marseille",
+     "short": "OM"
+    },
+    "MRW": {
+     "name": "AS Monaco FC",
+     "short": "ASM"
+    },
+    "LLR": {
+     "name": "Lille OSC",
+     "short": "LOSC"
+    },
+    "LYW": {
+     "name": "Olympique Lyonnais",
+     "short": "OL"
+    },
+    "NRB": {
+     "name": "OGC Nice",
+     "short": "NIC"
+    },
+    "LGR": {
+     "name": "Racing Club de Lens",
+     "short": "RCL"
+    },
+    "RRB": {
+     "name": "Stade Rennais FC 1901",
+     "short": "SRF"
+    },
+    "SBB": {
+     "name": "RC Strasbourg Alsace",
+     "short": "RCS"
+    },
+    "BRR": {
+     "name": "Stade Brestois 29",
+     "short": "SB29"
+    },
+    "TLV": {
+     "name": "Toulouse FC",
+     "short": "TFC"
+    },
+    "RMW": {
+     "name": "Paris FC",
+     "short": "PFC",
+     "c1": "#1d2c5e",
+     "c2": "#ffffff"
+    },
+    "NYG": {
+     "name": "FC Lorient",
+     "short": "FCL",
+     "c1": "#f58220",
+     "c2": "#000000"
+    },
+    "SEG": {
+     "name": "ES Troyes AC",
+     "short": "ESTA",
+     "c1": "#0047ab",
+     "c2": "#ffffff"
+    },
+    "AXW": {
+     "name": "AJ Auxerre",
+     "short": "AJA"
+    },
+    "ABW": {
+     "name": "Angers SCO",
+     "short": "SCO"
+    },
+    "LHS": {
+     "name": "Le Havre AC",
+     "short": "HAC"
+    },
+    "MPO": {
+     "name": "Le Mans FC",
+     "short": "LMFC",
+     "c1": "#c8102e",
+     "c2": "#ffd200"
+    }
+   },
+   "squads": {}
+  },
+  "ned": {
+   "name": "Netherlands Eredivisie",
+   "clubs": {
+    "AMR": {
+     "name": "AFC Ajax",
+     "short": "AJA"
+    },
+    "EHR": {
+     "name": "PSV",
+     "short": "PSV"
+    },
+    "RTW": {
+     "name": "Feyenoord Rotterdam",
+     "short": "FEY"
+    },
+    "AKR": {
+     "name": "AZ",
+     "short": "AZ"
+    },
+    "ESR": {
+     "name": "FC Twente '65",
+     "short": "TWE"
+    },
+    "UTR": {
+     "name": "FC Utrecht",
+     "short": "UTR"
+    },
+    "DRY": {
+     "name": "Go Ahead Eagles",
+     "short": "GAE"
+    },
+    "GRG": {
+     "name": "FC Groningen",
+     "short": "GRO"
+    },
+    "HVB": {
+     "name": "SC Heerenveen",
+     "short": "HEE"
+    },
+    "NRG": {
+     "name": "NEC",
+     "short": "NEC"
+    },
+    "ZBG": {
+     "name": "PEC Zwolle",
+     "short": "PEC"
+    },
+    "RCR": {
+     "name": "Sparta Rotterdam",
+     "short": "SPA"
+    },
+    "STY": {
+     "name": "Fortuna Sittard",
+     "short": "FOR"
+    },
+    "AYB": {
+     "name": "ADO Den Haag",
+     "short": "ADO",
+     "c1": "#00a650",
+     "c2": "#ffd200"
+    },
+    "ARB": {
+     "name": "SBV Excelsior",
+     "short": "EXC",
+     "c1": "#e2001a",
+     "c2": "#000000"
+    },
+    "WYB": {
+     "name": "SC Cambuur-Leeuwarden",
+     "short": "CAM",
+     "c1": "#ffd200",
+     "c2": "#0047ab"
+    },
+    "BYB": {
+     "name": "Willem II Tilburg",
+     "short": "WIL",
+     "c1": "#c8102e",
+     "c2": "#0047ab"
+    },
+    "VDO": {
+     "name": "Telstar 1963",
+     "short": "TEL",
+     "c1": "#ffffff",
+     "c2": "#1a1a1a"
+    }
+   },
+   "squads": {}
+  },
+  "por": {
+   "name": "Portuguese Primeira Liga",
+   "clubs": {
+    "LBR": {
+     "name": "Sport Lisboa e Benfica",
+     "short": "SLB"
+    },
+    "PBW": {
+     "name": "FC Porto",
+     "short": "FCP"
+    },
+    "LBG": {
+     "name": "Sporting Clube de Portugal",
+     "short": "SCP"
+    },
+    "BGR": {
+     "name": "Sporting Clube de Braga",
+     "short": "SCB"
+    },
+    "GMW": {
+     "name": "Vitória Guimarães",
+     "short": "VSC"
+    },
+    "FMB": {
+     "name": "FC Famalicão",
+     "short": "FAM"
+    },
+    "EYB": {
+     "name": "GD Estoril Praia",
+     "short": "EST"
+    },
+    "MRG": {
+     "name": "Moreirense FC",
+     "short": "MOR"
+    },
+    "ARY": {
+     "name": "FC Arouca",
+     "short": "ARO"
+    },
+    "VCG": {
+     "name": "Rio Ave FC",
+     "short": "RAV"
+    },
+    "BCR": {
+     "name": "Gil Vicente FC",
+     "short": "GIL"
+    },
+    "AZR": {
+     "name": "CD Santa Clara",
+     "short": "CSC"
+    },
+    "CPB": {
+     "name": "Casa Pia AC",
+     "short": "CPA"
+    },
+    "MBW": {
+     "name": "CD Nacional",
+     "short": "NAC"
+    },
+    "TGY": {
+     "name": "CS Marítimo",
+     "short": "MAR",
+     "c1": "#e30613",
+     "c2": "#00843d"
+    },
+    "ARG": {
+     "name": "CF Estrela da Amadora",
+     "short": "CFE",
+     "c1": "#e30613",
+     "c2": "#00843d"
+    },
+    "AVR": {
+     "name": "FC Alverca",
+     "short": "ALV",
+     "c1": "#c8102e",
+     "c2": "#ffffff"
+    },
+    "LBB": {
+     "name": "Académico de Viseu FC",
+     "short": "ACV",
+     "c1": "#1a1a1a",
+     "c2": "#ffd200"
+    }
+   },
+   "squads": {}
+  }
+ },
+ "competitions": {
+  "ucl": "UEFA Champions League",
+  "uel": "UEFA Europa League",
+  "uecl": "UEFA Conference League",
+  "cup_eng": "FA Cup",
+  "cup_esp": "Copa del Rey",
+  "cup_ita": "Coppa Italia",
+  "cup_ger": "DFB-Pokal",
+  "cup_fra": "Coupe de France",
+  "cup_ned": "KNVB Beker",
+  "cup_por": "Taça de Portugal",
+  "sup_eng": "FA Community Shield",
+  "sup_esp": "Supercopa de España",
+  "sup_ita": "Supercoppa Italiana",
+  "sup_ger": "DFL-Supercup",
+  "sup_fra": "Trophée des Champions",
+  "sup_ned": "Johan Cruijff Schaal",
+  "sup_por": "Supertaça Cândido de Oliveira",
+  "esc": "UEFA Super Cup"
+ }
+}
